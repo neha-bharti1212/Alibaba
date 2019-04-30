@@ -1,0 +1,50 @@
+  
+  .searchInputText {
+    width: 50%;
+  }
+  .searchInputDate {
+    width: 15%;
+    margin-bottom: 30px;
+  }
+  .md-search-button{
+    width: 38%;
+  }
+  .container {
+    padding: 40px;
+    border-radius: 5px;
+    margin:auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 3px 4px 8px #b1aeae;
+  }
+
+  .cost-card{
+    padding: 10px;
+    border-radius: 100px;
+    margin-left: 30px;
+    margin-top: 10px;
+    max-width: 100px;
+    height: 100px;
+    text-align: center;
+  }
+  .count-card {
+    padding: 10px;
+    border-radius: 100px;
+    margin-left: 30px;
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+  }
+  .report-card {
+    padding: 10px;
+    border-radius: 100px;
+    margin-left: 30px;
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+  }
+  

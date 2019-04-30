@@ -1,0 +1,22 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+  }
+  .auth > * {
+    width: 100%;
+    margin-top: 25px;
+  } 
+  .container {
+    padding: 40px;
+    border-radius: 5px;
+    margin:auto;
+    margin-top: 210px;
+    width: 20%;
+    text-align: center;
+    box-shadow: 3px 4px 8px #b1aeae;
+  }
+  .md-button{
+    margin-top: 20px;
+    background-color:#34b7bd;
+    color: white;
+  }

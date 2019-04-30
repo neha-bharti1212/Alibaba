@@ -1,0 +1,178 @@
+<mat-card class="container">
+  <mat-card-header>
+    <mat-card-title>Search</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Search_id</ng-template>
+
+          <mat-form-field class="searchInputText">
+            <mat-select #message maxlength="5" formControlName="firstCtrl" placeholder="Please Enter the Search ID"
+              required multiple>
+              <mat-option *ngFor="let search of searchList" [value]="search">{{search.search_id}}</mat-option>
+            </mat-select>
+          </mat-form-field>&nbsp;&nbsp;
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Start Date</ng-template>
+
+          <mat-form-field class="searchStartDate">
+            <input matInput [min]="minDate1" [max]="maxDate1" [matDatepicker]="startpicker" formControlName="secondCtrl"
+              placeholder="Choose the start date" required>
+            <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
+            <mat-datepicker #startpicker startView="year" [startAt]="start_date"></mat-datepicker>
+          </mat-form-field>&nbsp;&nbsp;
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>End Date</ng-template>
+
+          <mat-form-field class="searchEndDate">
+
+            <input matInput [min]="minDate2" [max]="maxDate2" [matDatepicker]="endpicker" formControlName="thirdCtrl"
+              placeholder="Choose the end date" required>
+            <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
+            <mat-datepicker #endpicker startView="year"></mat-datepicker>
+          </mat-form-field>&nbsp;&nbsp;
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="forthFormGroup">
+        <form [formGroup]="forthFormGroup">
+          <ng-template matStepLabel>Name</ng-template>
+
+          <mat-form-field class="searchName">
+            <input matInput placeholder="Select the Name" formControlName="forthCtrl" required>
+          </mat-form-field>&nbsp;&nbsp;
+
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <mat-card-actions>
+
+              <button mat-rasied-button class="md-search-button" (click)="search(event)" (click) = "stepper.reset()">Submit</button>
+            </mat-card-actions>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </mat-card-content>
+
+</mat-card>
+
+<div *ngIf="cardContent">
+  <mat-divider></mat-divider>
+  <!-- <mat-grid-list cols="1" rowHeight="250px"> -->
+
+    <!-- <mat-list>
+      <h3 mat-subheader>Exports</h3>
+      <mat-list-item *ngFor="let export of exports">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{export.export_name}}</h4>
+        <p mat-line> {{export.created_on}} </p>
+        <a mat-line href='{{export.clustered_data}}'>{{export.clustered_data}}</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      </mat-list> -->
+      <div class="mat-elevation-z8">
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>
+              Export Name
+            </th>
+            <th>
+              Created On
+            </th>
+            <th>
+              Cluster URL
+            </th>
+            <th>
+              Count
+            </th>
+            <th>
+                Cost
+              </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let export of exports">
+            <td>
+                {{export.export_name}}
+            </td>
+            <td>
+                {{export.created_on}}
+            </td>
+            <td>
+                <a href='{{export.clustered_data}}'>{{export.clustered_data}}</a>
+            </td>
+            <td>
+              {{export.document_count}} 
+            </td>
+            <td>
+                {{export.document_count * 65}} 
+              </td>
+          </tr>
+        </tbody>
+        </table>
+      
+      </div>
+    <!-- <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color"> -->
+      
+      <!-- <mat-card class="cost-card" *ngIf="tile.text === 'Cost'">
+        <mat-card-header>
+          <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>  
+          <app-cost></app-cost>
+        </mat-card-content>
+        <mat-card-actions>
+          <span style="margin-top:10px;">Cost</span>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card class="count-card" *ngIf="tile.text === 'Count'">
+        <mat-card-header>
+          <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-count></app-count>
+        </mat-card-content>
+        <mat-card-actions>
+          <span style="margin-top:10px;">Count</span>
+        </mat-card-actions>
+      </mat-card> -->
+
+      <!-- <mat-card class="report-card" *ngIf="tile.text === 'Report'">
+        <mat-card-header>
+          <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-report></app-report>
+        </mat-card-content>
+        <mat-card-actions>
+          <span style="margin-top:10px;"></span>
+        </mat-card-actions>
+      </mat-card> -->
+    <!-- </mat-grid-tile> -->
+  <!-- </mat-grid-list> -->
+</div>
