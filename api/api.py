@@ -18,7 +18,7 @@ import data as dt
 
 app = Flask(__name__)
 
-user_key='f85448a8491fc21c65a582f9b74b1440'
+user_key='<user key>'
 
 
 @app.route('/login',methods=['GET','POST'])
@@ -93,7 +93,7 @@ def createReport():
     export_company=res['onetime_export']['company_name']
     company_name='fitbit'
     export_name=export_name
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:/Users/Neha/Downloads/key.json"
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="<Google credential>"
     status=dt.checkStatus(credls,export_id,document_count)
     if status:
         print("Data link is generated at {} \n with id {}".format(data_link,export_id))
